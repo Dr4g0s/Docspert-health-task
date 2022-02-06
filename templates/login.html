@@ -1,0 +1,22 @@
+{% extends 'auth_base.html' %}
+
+{% block title %} Login | Docspert {% endblock %}
+
+{% block authentication %}
+    <form action="" method="POST">
+        {{ form.non_field_errors }}
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="email">Email</label>
+            {{ form.username }}
+            <p style="color: red;">{{ form.username.errors }}</p>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            {{ form.password }}
+            <p style="color: red;">{{ form.password.errors }}</p>
+        </div>
+        <a href="{% url 'register' %}" class="btn btn-link">Register new account</a>
+        <button type="submit" class="btn btn-info float-right">Log in</button>
+    </form>
+{% endblock %}
